@@ -41,8 +41,10 @@ https://{url}/auth/accessToken
         "expiresIn": 7200,
         "accessToken":""
     },
-  "errCode": "0",
-  "msg": "操作成功"
+   "meta": {
+        "code": 0,
+        "message": "操作成功"
+    }
 }
 ```
 
@@ -60,7 +62,7 @@ https://{url}/auth/accessToken
 
 ```json
 http请求方式：POST
-https://{url}/ticket/v1/account/balance
+https://{url}/voucher/v1/account/balance
 {
 	
 	"accessToken":"accessToken",
@@ -83,83 +85,68 @@ https://{url}/ticket/v1/account/balance
 
 ```json
 {
-
-  "data": {
-    "ticketList":[
-		{
-			"contractAddress": "合约地址",
-			"ticketId": "券Id",
-			"ticketName": "券名称",
-			"ticketIcon": "url",
-			"ticketDesc": "券描述",
-			"ticketIssuer": {
-				"address": "发行方区块链地址",
-				"icon": "",
-				"name": "名称"
-			},
-			"ticketAcceptance": {
-				"address": "承兑方区块链地址",
-				"icon": "",
-				"name": "名称"
-			},
-			"ticketFaceValue": "600",
-			"ticketSpe": [{
-					"key": "颜色",
-					"value": "红色"
-				}, {
-					"key": "尺寸",
-					"value": "42"
-				}
-			],
+    "meta": {
+        "code": 0,
+        "message": "操作成功"
+    },
+    "data": {
+        "page": {
+            "pageSize": 10,
+            "pageStart": 1,
+            "pageTotal": 2
+        },
+        "voucherList": [{
+            "contractAddress": "buQjKBwHxxpXUQ5vguogcQM6JuWpD8eQjqxB",
+            "voucherId": "1ae0fd9c54ba44dd8dc38b0441b6332a",
+            "voucherName": "大陷水饺韭菜1kg",
+            "voucherIcon": 	"https://timgsa.baidu.com/timgf9c10cc530cool.cnFcommunity01a1.jpg",
+            "faceValue": "18",
+            "description": "韭菜水饺:我就是韭菜",
+            "trancheId": "0",
 			"balance": "100",
-			"startTime":"",
-			"endTime":"",
-			"trancheId":""
-		}
-    ],
-	
-	"page": {
-            "count": 1,
-            "curSize": 3,
-            "endOfGroup": 1,
-            "firstResultNumber": 0,
-            "nextFlag": false,
-            "queryTotal": true,
-            "size": 10,
-            "start": 1,
-            "startOfGroup": 1,
-            "total": 3
+            "voucherProperties": [{
+                "key": "价格",
+                "value": "18"
+            }, {
+                "key": "颜色",
+                "value": "黄色"
+            }],
+            "voucherIssuer": {
+                "address": "buQjhTsw3csavGJt3su5YfsWqQteqp81ZQT8",
+                "icon": "",
+                "name": "三全食品有效公司"
+            },
+            "voucherAcceptance": [{
+                "address": "buQjhTsw3csavGJt3su5YfsWqQteqp81ZQT8",
+                "icon": "http://xxxxxx.png",
+                "name": "三全集中处理中心"
+            }]
+        }]
     }
-  },
-  
-  "errCode": "0",
-  "msg": "操作成功"
 }
 ```
 > 响应报文说明：
 
 | 字段名    | 类型   | 是否必填 | 描述           |
 | --------- | ------ | -------- | -------------- |
-| ticketList   | List | 是        | 券列表      |
+| voucherList | List | 是        | 券列表      |
 | contractAddress  | String | 是        | 合约地址      |
-| ticketId  | String | 是        | 券ID      |
-| ticketName  | String | 是        | 券名称      |
-| ticketIcon  | String | 是        | 券icon      |
-| ticketDesc  | String | 是        | 券描述      |
-| contractAddress  | String | 是        | 合约地址      |
-| contractAddress  | String | 是        | 合约地址      |
-| ticketIssuer  | Object | 是        | 券发行方      |
-| ticketIssuer.address  | String | 是        | 券发行方地址      |
-| ticketIssuer.icon  | String | 是        | 券发行方icon      |
-| ticketIssuer.name  | String | 是        | 券发行方名称      |
-| ticketAcceptance  | Object | 是        | 券发行方名称      |
-| ticketAcceptance.address  | String | 是        | 承兑方地址      |
-| ticketAcceptance.icon  | String | 是        | 承兑方icon      |
-| ticketAcceptance.name  | String | 是        | 承兑方名称      |
-| ticketFaceValue  | String | 是        | 面值      |
-| ticketSpe  | List | 是        |规格      |
-| ticketSpe.key  | String | 是        | 属性key      |
-| ticketSpe.value  | String | 是        | 属性值      |
+| voucherId | String | 是        | 券ID      |
+| voucherName | String | 是        | 券名称      |
+| voucherIcon | String | 是        | 券icon      |
+| description | String | 是        | 券描述      |
+| voucherIssuer | Object | 是        | 券发行方      |
+| voucherIssuer.address | String | 是        | 券发行方地址      |
+| voucherIssuer.icon | String | 是        | 券发行方icon      |
+| voucherIssuer.name | String | 是        | 券发行方名称      |
+| voucherAcceptance | Object | 是        | 券发行方名称      |
+| voucherAcceptance.address | String | 是        | 承兑方地址      |
+| voucherAcceptance.icon | String | 是        | 承兑方icon      |
+| voucherAcceptance.name | String | 是        | 承兑方名称      |
+| faceValue | String | 是        | 面值      |
+| voucherProperties | List | 是        |规格      |
+| voucherProperties.key | String | 是        | 属性key      |
+| voucherProperties.value | String | 是        | 属性值      |
 | balance  | String | 是        | 余额      |
 | startTime  | String | 是        | 有效期-开始时间 无有效期为-1      |
 | endTime  | String | 是        | 有效期-开始时间 无有效期为-1      |
@@ -172,104 +159,89 @@ https://{url}/ticket/v1/account/balance
 
 ```json
 http请求方式：POST
-https://{url}/ticket/v1/list
+https://{url}/voucher/v1/list
 {
 	
 	"accessToken":"accessToken",
-	"startPage":"",
+	"start":"",
 	"pageSize":""
 }
 ```
 
 请求报文说明：
 
-| 字段名                  | 类型   | 是否必填 | 描述                                                         |
-| ----------------------- | ------ | -------- | ------------------------------------------------------------ |
-| accessToken             | String | 是       | 请求令牌     |
-| startPage               | String | 是       |分页起始页|
-| pageSize                | String | 是       |每页数量|
+| 字段名      | 类型   | 是否必填 | 描述       |
+| ----------- | ------ | -------- | ---------- |
+| accessToken | String | 是       | 请求令牌   |
+| start       | String | 是       | 分页起始页 |
+| pageSize    | String | 是       | 每页数量   |
 
 
 响应报文：
 
 ```json
 {
-
-  "data": {
-    "ticketList":[
-		{
-			"contractAddress": "合约地址",
-			"ticketId": "券Id",
-			"ticketName": "券名称",
-			"ticketIcon": "url",
-			"ticketDesc": "券描述",
-			"ticketIssuer": {
-				"address": "发行方区块链地址",
-				"icon": "",
-				"name": "名称"
-			},
-			"ticketAcceptance": {
-				"address": "承兑方区块链地址",
-				"icon": "",
-				"name": "名称"
-			},
-			"ticketFaceValue": "600",
-			"ticketSpe": [{
-					"key": "颜色",
-					"value": "红色"
-				}, {
-					"key": "尺寸",
-					"value": "42"
-				}
-			],
-			"startTime":"",
-			"endTime":"",
-			"trancheId":""
-		}
-    ],
-	
-	"page": {
-            "count": 1,
-            "curSize": 3,
-            "endOfGroup": 1,
-            "firstResultNumber": 0,
-            "nextFlag": false,
-            "queryTotal": true,
-            "size": 10,
-            "start": 1,
-            "startOfGroup": 1,
-            "total": 3
+    "meta": {
+        "code": 0,
+        "message": "操作成功"
+    },
+    "data": {
+        "page": {
+            "pageSize": 10,
+            "pageStart": 1,
+            "pageTotal": 2
+        },
+        "voucherList": [{
+            "contractAddress": "buQjKBwHxxpXUQ5vguogcQM6JuWpD8eQjqxB",
+            "voucherId": "1ae0fd9c54ba44dd8dc38b0441b6332a",
+            "voucherName": "大陷水饺韭菜1kg",
+            "voucherIcon": "https://timgsa.baidu.com/timg?f9c10cc530cool.cnFcommunity01a1.jpg",
+            "faceValue": "18",
+            "description": "韭菜水饺:我就是韭菜",
+            "trancheId": "0",
+            "voucherProperties": [{
+                "key": "价格",
+                "value": "18"
+            }, {
+                "key": "颜色",
+                "value": "黄色"
+            }],
+            "voucherIssuer": {
+                "address": "buQjhTsw3csavGJt3su5YfsWqQteqp81ZQT8",
+                "icon": "",
+                "name": "三全食品有效公司"
+            },
+            "voucherAcceptance": [{
+                "address": "buQjhTsw3csavGJt3su5YfsWqQteqp81ZQT8",
+                "icon": "http://xxxxxx.png",
+                "name": "三全集中处理中心"
+            }]
+        }]
     }
-  },
-  
-  "errCode": "0",
-  "msg": "操作成功"
 }
 ```
 > 响应报文说明：
 
 | 字段名    | 类型   | 是否必填 | 描述           |
 | --------- | ------ | -------- | -------------- |
-| ticketList   | List | 是        | 券列表      |
+| voucherList | List | 是        | 券列表      |
 | contractAddress  | String | 是        | 合约地址      |
-| ticketId  | String | 是        | 券ID      |
-| ticketName  | String | 是        | 券名称      |
-| ticketIcon  | String | 是        | 券icon      |
-| ticketDesc  | String | 是        | 券描述      |
-| contractAddress  | String | 是        | 合约地址      |
-| contractAddress  | String | 是        | 合约地址      |
-| ticketIssuer  | Object | 是        | 券发行方      |
-| ticketIssuer.address  | String | 是        | 券发行方地址      |
-| ticketIssuer.icon  | String | 是        | 券发行方icon      |
-| ticketIssuer.name  | String | 是        | 券发行方名称      |
-| ticketAcceptance  | Object | 是        | 券发行方名称      |
-| ticketAcceptance.address  | String | 是        | 承兑方地址      |
-| ticketAcceptance.icon  | String | 是        | 承兑方icon      |
-| ticketAcceptance.name  | String | 是        | 承兑方名称      |
-| ticketFaceValue  | String | 是        | 面值      |
-| ticketSpe  | List | 是        |规格      |
-| ticketSpe.key  | String | 是        | 属性key      |
-| ticketSpe.value  | String | 是        | 属性值      |
+| voucherId | String | 是        | 券ID      |
+| voucherName | String | 是        | 券名称      |
+| voucherIcon | String | 是        | 券icon      |
+| description | String | 是        | 券描述      |
+| faceValue | String | 是        | 面值  |
+| voucherIssuer | Object | 是        | 券发行方      |
+| voucherIssuer.address | String | 是        | 券发行方地址      |
+| voucherIssuer.icon | String | 是        | 券发行方icon      |
+| voucherIssuer.name | String | 是        | 券发行方名称      |
+| voucherAcceptance | Object | 是        | 券发行方名称      |
+| voucherAcceptance.address | String | 是        | 承兑方地址      |
+| voucherAcceptance.icon | String | 是        | 承兑方icon      |
+| voucherAcceptance.name | String | 是        | 承兑方名称      |
+| voucherProperties | List | 是        |规格      |
+| voucherProperties.key | String | 是        | 属性key      |
+| voucherProperties.value | String | 是        | 属性值      |
 | startTime  | String | 是        | 有效期-开始时间 无有效期为-1      |
 | endTime  | String | 是        | 有效期-开始时间 无有效期为-1      |
 | trancheId  | String | 是        | 区块链分组id      |
