@@ -67,7 +67,7 @@ https://{url}/voucher/v1/account/balance
 	
 	"accessToken":"accessToken",
 	"address":"buQmpzjwkA8yY18vzrnk72SuTmm5bz1rTyej",
-	"startPage":"",
+	"start":"",
 	"pageSize":""
 }
 ```
@@ -78,7 +78,7 @@ https://{url}/voucher/v1/account/balance
 | ----------------------- | ------ | -------- | ------------------------------------------------------------ |
 | accessToken             | String | 是       | 请求令牌     |
 | address                 | String | 是       | 账户地址     |
-| startPage               | String | 是       |分页起始页|
+| start               | String | 是       |分页起始页|
 | pageSize                | String | 是       |每页数量|
 
 响应报文：
